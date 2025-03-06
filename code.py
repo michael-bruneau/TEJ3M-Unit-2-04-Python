@@ -12,7 +12,7 @@ import busio
 blink_delay = 1
 voltage_output = 0;
 for_loop_start = -1
-total_loop_cycle = 2
+total_loop_cycle = 3
 counter = 0
 
 # constants
@@ -21,18 +21,45 @@ PIN_4 = 4;
 PIN_3 = 3;
 
 # arrays
-pin = [PIN_5, PIN_3, PIN_4]
+pin = [red_led, green_led, blue_led]
 
 # setup
-led = digitalio.DigitalInOut(board.GP13)
-led.direction = digitalio.Direction.OUTPUT
+red_led = digitalio.DigitalInOut(board.G11)
+blue_led = digitalio.DigitalInOut(board.GP13)
+green_led = digitalio.DigitalInOut(board.GP12)
+red_led.direction = digitalio.Direction.OUTPUT
+blue_led.direction = digitalio.Direction.OUTPUT
+green_led.direction = digitalio.Direction.OUTPUT
+
 
 # loop
 while True:
-    # turns on LED and pauses for one second
-    led.value = True
-    time.sleep(blink_delay)
+    for counter in range(total_loop_cycle):
 
-    # turns off LED and pauses for one second
-    led.value = False
-    time.sleep(blink_delay)
+        # turns off previous light
+        if for_loop_start > 0:
+            pin[for_loop_start - 1].value = False
+
+        pin[for_loop_start].value = True
+
+        # Makes each loop one less than the last until it resets
+        for_loop_start += 1
+
+        for pin_select in range(for_loop_start, total_loop_cycle):
+            pin[pin_select].value = True
+            time.sleep(blink_delay) # Wait for 1000 millisecond(s)
+            pin[pin_select].value = False
+    
+
+    # reset
+    for_loop_start = -1
+    counter = 0
+
+    # white light
+    red_led.value = True
+    blue_led.value = True
+    green_led.value = True
+    time.sleep(blink_delay) # Wait for 1000 millisecond(s)
+    red_led.value = False
+    blue_led.value = False
+    green_led.value = False
