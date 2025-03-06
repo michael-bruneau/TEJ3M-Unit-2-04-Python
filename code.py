@@ -21,7 +21,7 @@ PIN_4 = 4;
 PIN_3 = 3;
 
 # setup
-red_led = digitalio.DigitalInOut(board.G11)
+red_led = digitalio.DigitalInOut(board.GP11)
 blue_led = digitalio.DigitalInOut(board.GP13)
 green_led = digitalio.DigitalInOut(board.GP12)
 red_led.direction = digitalio.Direction.OUTPUT
