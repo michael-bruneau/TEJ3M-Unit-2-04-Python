@@ -39,7 +39,8 @@ while True:
         if for_loop_start > 0:
             pin[for_loop_start - 1].value = False
 
-        pin[for_loop_start].value = True
+        if for_loop_start >= 0:
+            pin[for_loop_start].value = True
 
         # Makes each loop one less than the last until it resets
         for_loop_start += 1
