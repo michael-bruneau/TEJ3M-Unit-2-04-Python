@@ -20,9 +20,6 @@ PIN_5 = 5;
 PIN_4 = 4;
 PIN_3 = 3;
 
-# arrays
-pin = [red_led, green_led, blue_led]
-
 # setup
 red_led = digitalio.DigitalInOut(board.G11)
 blue_led = digitalio.DigitalInOut(board.GP13)
@@ -31,6 +28,8 @@ red_led.direction = digitalio.Direction.OUTPUT
 blue_led.direction = digitalio.Direction.OUTPUT
 green_led.direction = digitalio.Direction.OUTPUT
 
+# arrays
+pin = [red_led, green_led, blue_led]
 
 # loop
 while True:
