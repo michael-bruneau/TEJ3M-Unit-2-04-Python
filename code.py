@@ -1,7 +1,7 @@
 # Created by: Michael Bruneau
 # Created on: March 2025
 #
-# This module is a Raspberrypy Pico program that causes a RGB LED to change colours
+# This module is a Raspberrypy Pico program that sends power to RGB LED to create a color then pauses for one second and switches to the next colour and then loops after all colors have been produced
 
 import board
 import digitalio
